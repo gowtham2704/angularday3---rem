@@ -279,5 +279,45 @@ if(value>=2 || value1>=2)
     {{n1}}
 
 </div>
+____________________________________________________________________________________________________________________________________
+11. Create an Angular application with the title as "Welcome to Task21!" in h1 format.
+Create a form with two textboxes and a button
+1.Textbox1 with classname as fortextbox.
+2.Textbox2 with classname as fortextbox1
+3.Button with classname as button
+Find the difference between the two dates given as input for textbox1 and textbox2.(Refer Screenshot)
+
+app.component.html
+
+<div style="text-align:center">
+<h1>{{title}}</h1>
+Enter the First date<input type="text" class="fortextbox" placeholder="dd/mm/yyyy" #text><br>
+Enter the Second date<input type="text" class="fortextbox1" placeholder="dd/mm/yyyy" #text1><br>
+<button id="button" (click)="clickme(text.value,text1.value)">Change</button><br><br>
+<div *ngIf="show">
+{{res}}
+</div>
+</div>
+
+app.component.ts
+
+export class AppComponent {
+title="Welcome to Task21!"
+show=false;
+res:any;
+clickme(value1,value2)
+{ 
+this.res=0;
+const startdate=new Date(value1);
+const enddate=new Date(value2);
+var diff = Math.abs((startdate.valueOf() - enddate.valueOf())/(24*60*60*1000));
+this.res=diff;
+this.show=true;
+if(value1.length==0 &&value2.length==0)
+{
+this.res="Type Something";
+}
+}
+}
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
